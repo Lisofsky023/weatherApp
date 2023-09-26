@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import CitySearch from './components/CitySearch/CitySearch';
 
 const API_KEY = '91e55b8e09544d938b7120222232509';
 
 function App() {
-  const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [citiesList, setCitiesList] = useState([]);
-  const [timeoutId, setTimeoutId] = useState(null);
 
   useEffect(() => {
     const initializeCities = async () => {
@@ -33,16 +32,6 @@ function App() {
     localStorage.setItem('citiesList', JSON.stringify(citiesList));
   }, [citiesList]);
 
-  const fetchSuggestions = async () => {
-    try {
-      const response = await fetch(`http://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=${query}`);
-      const data = await response.json();
-      setSuggestions(data);
-    } catch (error) {
-      console.error("Error fetching suggestions:", error);
-    }
-  };
-
   const fetchWeatherData = async (cityName) => {
     const cachedWeatherData = localStorage.getItem(`weather_${cityName}`);
     if (cachedWeatherData) {
@@ -55,17 +44,6 @@ function App() {
 
     return data;
   };
-
-  useEffect(() => {
-    if (timeoutId) clearTimeout(timeoutId);
-
-    if (query.length > 0) {
-      const timer = setTimeout(fetchSuggestions, 500);
-      setTimeoutId(timer);
-    } else {
-      setSuggestions([]);
-    }
-  }, [query]);
 
   const handleCityAdd = async (city) => {
     if (!citiesList.some(c => c.name === city.name)) {
@@ -82,21 +60,7 @@ function App() {
 
   return (
     <div className="App">
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Введите название города..."
-      />
-      {suggestions.length > 0 && (
-        <ul>
-          {suggestions.map((city) => (
-            <li key={city.id} onClick={() => handleCityAdd(city)}>
-              {city.name}, {city.country}
-            </li>
-          ))}
-        </ul>
-      )}
+      <CitySearch onCitySelect={handleCityAdd} />
       {citiesList.map(city => (
         <div key={city.id}>
           {city.name}, {city.country}
