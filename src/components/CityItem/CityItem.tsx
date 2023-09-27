@@ -1,6 +1,12 @@
 import React from 'react';
+import { City } from '../../services/weatherTypes';
 
-export default function CityItem({ city, onRemove }) {
+interface CityItemProps {
+  city: City;
+  onRemove: (name: string) => void;
+}
+
+const CityItem: React.FC<CityItemProps> = ({ city, onRemove }) => {
   return (
     <div key={city.id}>
       {city.name}, {city.country}
@@ -17,3 +23,4 @@ export default function CityItem({ city, onRemove }) {
     </div>
   );
 }
+export default CityItem;

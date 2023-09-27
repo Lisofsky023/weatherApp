@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { fetchSuggestions } from '../services/WeatherService.jsx';
+import { fetchSuggestions } from '../services/WeatherService.js';
+import { Suggestion } from '../services/weatherTypes.js';
 
-export const useSuggestions = (query) => {
-    const [suggestions, setSuggestions] = useState([]);
-    const [error, setError] = useState(null);
+export const useSuggestions = (query: string) => {
+    const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetch = async () => {
@@ -23,4 +24,4 @@ export const useSuggestions = (query) => {
     }, [query]);
 
     return { suggestions, error };
-};
+}
