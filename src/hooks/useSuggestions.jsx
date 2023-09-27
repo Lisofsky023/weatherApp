@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchSuggestions } from '../services/WeatherService';
+import { fetchSuggestions } from '../services/WeatherService.jsx';
 
 export const useSuggestions = (query) => {
     const [suggestions, setSuggestions] = useState([]);
