@@ -17,7 +17,7 @@ interface CitySearchProps {
           <SearchInput
               value={query}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
-              placeholder="Введите название города..."
+              placeholder="Search..."
           />
           {error && <div className="error">{error}</div>}
           {suggestions.length > 0 && (
@@ -25,6 +25,9 @@ interface CitySearchProps {
           )}
       </div>
     );
-  }
+  } 
   
   export default CitySearch;
+
+
+

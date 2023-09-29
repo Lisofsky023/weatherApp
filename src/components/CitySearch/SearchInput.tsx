@@ -1,15 +1,3 @@
-// import React from 'react';
-
-// export default function SearchInput({ value, onChange, placeholder }) {
-//   return (
-//     <input
-//       type="text"
-//       value={value}
-//       onChange={onChange}
-//       placeholder={placeholder}
-//     />
-//   );
-// }
 import React, { ChangeEvent } from 'react';
 
 interface SearchInputProps {
@@ -20,13 +8,17 @@ interface SearchInputProps {
 
 const SearchInput: React.FC<SearchInputProps> = ({ value, onChange, placeholder }) => {
   return (
-    <input
+    <div className="city-search">
+      <input
+       className="city-input"
       type="text"
       value={value}
       onChange={onChange}
       placeholder={placeholder}
     />
+    </div>
   );
 }
 
 export default SearchInput;
+
