@@ -1,3 +1,3 @@
 # React + TypeScript + Vite
-install: nmp i
+install: nmp i,
 npm run dev
