@@ -40,6 +40,7 @@ interface CityItemProps {
 
 const CityItem: React.FC<CityItemProps> = ({ city, onRemove }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isSwipedLeft, setIsSwipedLeft] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -51,14 +52,19 @@ const CityItem: React.FC<CityItemProps> = ({ city, onRemove }) => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
   const handlers = isMobile ? useSwipeable({
-    onSwipedLeft: () => onRemove(city.name),
+    onSwipedLeft: () => {
+        setIsSwipedLeft(true);
+        setTimeout(() => {
+            onRemove(city.name);
+            setIsSwipedLeft(false);
+        }, 300);  // задержка соответствует длительности анимации
+    },
     trackMouse: true
-  }) : {};
+}) : {};
 
   return (
-    <li className='cities__item' key={city.id} {...handlers}>
+    <li className={`cities__item ${isSwipedLeft ? 'swiped-left' : ''}`} key={city.id} {...handlers}>
       {city.weatherData && (
         <div className='cities__item__weather-data'>
           <div className="cities__name-temp">
@@ -71,10 +77,16 @@ const CityItem: React.FC<CityItemProps> = ({ city, onRemove }) => {
             <p>Влажность: {city.weatherData.current.humidity}%</p>
             <p>Ветер: {city.weatherData.current.wind_kph} км/ч</p>
           </div>
+          {!isMobile ? (
+            <button className='cities__item__remove-button' onClick={() => onRemove(city.name)}>Delete</button>
+          ) : (
+            <img 
+              src="/public/swipe.png" 
+              alt="Swipe hint"
+              className='cities__swipe'
+            />
+          )}
         </div>
-      )}
-      {!isMobile && (
-        <button className='cities__item__remove-button' onClick={() => onRemove(city.name)}>Delete</button>
       )}
     </li>
   );

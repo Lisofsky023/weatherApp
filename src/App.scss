@@ -92,10 +92,10 @@ input {
       flex-direction: column;
       align-items: center;
       gap: 10px;
-      img {
-        width: 50px;
-        height: 50px;
-      }
+      // img {
+      //   width: 50px;
+      //   height: 50px;
+      // }
     }
 
     &__remove-button {
@@ -134,22 +134,36 @@ input {
   .cities {
     padding-top: 40px;
     &__item {
-      width: 100%;
+      width: 364px;
       margin-right: 0;
+      transition: transform 0.3s ease-out;
       &:not(:last-child) {
         margin-right: 0;
+      }
+      &.swiped-left {
+        transform: translateX(-100%);
       }
     }
     &__item__weather-data {
       align-items: baseline;
       flex-direction: row;
       justify-content: space-evenly;
+      position: relative;
     }
     &__suggestions-list {
       padding-top: 40px;
+      
     }
     &__name-temp {
       align-items: flex-start;
+    }
+    &__swipe {
+      width: 24px;
+      height: auto;
+      opacity: 0.7;
+      position: absolute;
+      bottom: 0;
+      right: 0;
     }
   }
   input {
@@ -157,17 +171,23 @@ input {
     background: black;
     color: aliceblue;
     width: 90%;
-    top: 20px;
+    top: 10px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 100; 
   }
   .suggestions {
     padding-top: 40px;
+    text-align: center;
+  }
+  .container {
+    padding: 6px;
   }
 }
 
-@media (max-width: 425px) {
-
+@media (max-width: 375px) {
+  .cities {
+    width: 290px;
+  }
 }
 

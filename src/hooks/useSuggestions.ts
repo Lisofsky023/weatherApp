@@ -45,7 +45,7 @@ export const useSuggestions = (query: string) => {
             const storedSuggestions = localStorage.getItem(`suggestions_${debouncedQuery}`);
             const storedTime = localStorage.getItem(`suggestionsTime_${debouncedQuery}`);
             const currentTime = new Date().getTime();
-            const oneHour = 60 * 60 * 1000;
+            const oneHour = 20 * 60 * 1000;
 
             if (storedSuggestions && storedTime && (currentTime - Number(storedTime) < oneHour)) {
                 setSuggestions(JSON.parse(storedSuggestions));
