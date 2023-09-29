@@ -1,6 +1,6 @@
-const fs = require('fs');
+import { readFileSync } from 'fs';
 
-const requiredVersion = fs.readFileSync('.nvmrc', 'utf-8').trim();
+const requiredVersion = readFileSync('.nvmrc', 'utf-8').trim();
 const currentVersion = process.version.replace('v', '');
 
 if (requiredVersion !== currentVersion) {
