@@ -133,6 +133,7 @@ input {
 @media (max-width: 425px) {
   .cities {
     padding-top: 40px;
+    justify-content: center;
     &__item {
       width: 364px;
       margin-right: 0;
