@@ -10,7 +10,6 @@ export function useDebounce(value: any, delay: number) {
     const handler = setTimeout(() => {
       // После истечения задержки обновляем состояние
       setDebouncedValue(value);
-      console.log("Value after debounce:", value);
     }, delay);
 
     // Эта функция будет вызвана перед следующим эффектом или при размонтировании компонента

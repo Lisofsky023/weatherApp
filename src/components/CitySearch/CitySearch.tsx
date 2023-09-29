@@ -13,15 +13,15 @@ interface CitySearchProps {
     const { suggestions, error } = useSuggestions(query);
   
     return (
-      <div>
+      <div className="wrapper">
           <SearchInput
-              value={query}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
-              placeholder="Search..."
+            value={query}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
+            placeholder="Search..."
           />
           {error && <div className="error">{error}</div>}
           {suggestions.length > 0 && (
-              <SuggestionsList suggestions={suggestions} onSelect={onCitySelect} />
+            <SuggestionsList suggestions={suggestions} onSelect={onCitySelect} />
           )}
       </div>
     );

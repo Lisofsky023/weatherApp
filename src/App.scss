@@ -1,11 +1,9 @@
-$container-width: 1200px;
+$container-width: 860px;
 $card-margin: 20px;
 $card-width: calc((#{$container-width} - 4 * #{$card-margin}) / 3);
 
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,7 +29,7 @@ input {
   padding: 10px 20px;
   width: 100%;
   box-sizing: border-box;
-  margin-bottom: 40px;
+  margin: 0 auto 40px;
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
@@ -52,6 +50,7 @@ input {
 
 .container {
   max-width: $container-width;
+  width: 100%;
   margin: 0 auto;
   padding: $card-margin;
   box-sizing: border-box;
@@ -71,8 +70,9 @@ input {
     background-color: #000000d9;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
-      &:not(:last-child) {
-        margin-right: 20px;
+    margin-right: 20px;
+      &:nth-child(3n) {
+        margin-right: 0;
       }
     
     &__name {
@@ -105,12 +105,20 @@ input {
       border-radius: 10px;
       background-color: brown;
       cursor: pointer;
+      font-weight: bold;
       color: rgb(255 255 255 / 47%);
       transition: color 0.2s ease-in-out;
       &:hover {
         color: rgb(255, 255, 255);
       }
     }
+  }
+
+  &__name-temp {
+    // width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -140,19 +148,22 @@ input {
     &__suggestions-list {
       padding-top: 40px;
     }
+    &__name-temp {
+      align-items: flex-start;
+    }
   }
   input {
     position: fixed;
     background: black;
     color: aliceblue;
+    width: 90%;
     top: 20px;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 100; 
   }
   .suggestions {
     padding-top: 40px;
-    background-color: rgba(250, 235, 215, 0.322);
-    border-radius: 10px;
   }
 }
 

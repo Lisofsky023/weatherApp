@@ -13,19 +13,17 @@ function App() {
   const { citiesList, addCity, removeCity } = useCityActions(initialCities);
 
   return (
-    <div className="App">
-      <div className="container">
-        {/* Компонент для поиска и выбора городов. 
-           При выборе города вызывается функция addCity. */}
+    <div className="container">
+      {/* Компонент для поиска и выбора городов. 
+        При выборе города вызывается функция addCity. */}
       <CitySearch onCitySelect={addCity} />
-        {/* Отображение списка выбранных городов. 
-           Каждый элемент списка предоставляет возможность удалить город из списка. */}
+      {/* Отображение списка выбранных городов. 
+        Каждый элемент списка предоставляет возможность удалить город из списка. */}
       <ul className="cities">
         {citiesList.map(city => (
           <CityItem key={city.id} city={city} onRemove={removeCity} />
       ))}
       </ul>
-      </div>
     </div>
   );
 }
