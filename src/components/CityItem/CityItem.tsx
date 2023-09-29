@@ -81,7 +81,7 @@ const CityItem: React.FC<CityItemProps> = ({ city, onRemove }) => {
             <button className='cities__item__remove-button' onClick={() => onRemove(city.name)}>Delete</button>
           ) : (
             <img 
-              src="/public/swipe.png" 
+              src="/swipe.png" 
               alt="Swipe hint"
               className='cities__swipe'
             />
