@@ -6,7 +6,7 @@ const API_KEY = '91e55b8e09544d938b7120222232509';
 export const fetchWeatherData = async (cityName: string): Promise<WeatherData> => {
     try {
         // Запрос к API для получения погодных данных
-        const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${cityName}`);
+        const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${cityName}`);
         const data: WeatherData = await response.json();
         console.log('data', data); // Логирование для отладки
         return data;
@@ -25,7 +25,7 @@ export const fetchSuggestions = async (query: string): Promise<Suggestion[]> => 
             return [];
         }
         // Запрос к API для получения предложений
-        const response = await fetch(`http://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=${query}`);
+        const response = await fetch(`https://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=${query}`);
         const suggestions: Suggestion[] = await response.json();
         console.log('suggestions', suggestions); // Логирование для отладки
         return suggestions;
