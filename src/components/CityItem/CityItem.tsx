@@ -73,7 +73,6 @@ const CityItem: React.FC<CityItemProps> = ({ city, onRemove }) => {
             <img src={city.weatherData.current.condition.icon} alt={city.weatherData.current.condition.text} />
           </div>
           <div className="cities__data">
-            {/* <p>{city.weatherData.current.condition.text}</p> */}
             <p>Влажность: {city.weatherData.current.humidity}%</p>
             <p>Ветер: {city.weatherData.current.wind_kph} км/ч</p>
           </div>

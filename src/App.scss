@@ -190,5 +190,10 @@ input {
   .cities {
     width: 290px;
   }
+  .conrainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
