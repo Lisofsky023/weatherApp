@@ -6,8 +6,6 @@ import { City, WeatherData } from '../services/weatherTypes';
 function useCityActions(initialCities: City[] = []) {
   const [citiesList, setCitiesList] = useState<City[]>(localStorageService.getCities().length > 0 ? localStorageService.getCities() : initialCities);
   // Инициализируем список городов из локального хранилища или используем пустой массив по умолчанию
-  // const [citiesList, setCitiesList] = useState<City[]>(localStorageService.getCities());
-
   // Сохраняем текущий список городов в локальное хранилище каждый раз при его обновлении
   useEffect(() => {
     localStorageService.saveCities(citiesList);
