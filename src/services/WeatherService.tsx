@@ -1,10 +1,12 @@
 import { WeatherData, Suggestion } from '../services/weatherTypes';
-
-const API_KEY = '91e55b8e09544d938b7120222232509';
+import { 
+    WEATHER_API_BASE_URL, 
+    API_KEY 
+  } from './constants';
 
 export const fetchWeatherData = async (cityName: string): Promise<WeatherData> => {
     try {
-        const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${cityName}`);
+        const response = await fetch(`${WEATHER_API_BASE_URL}/current.json?key=${API_KEY}&q=${cityName}`);
         
         if (!response.ok) {
             const errorData = await response.json();
@@ -29,7 +31,7 @@ export const fetchSuggestions = async (query: string): Promise<Suggestion[]> => 
             return [];
         }
 
-        const response = await fetch(`https://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=${query}`);
+        const response = await fetch(`${WEATHER_API_BASE_URL}/search.json?key=${API_KEY}&q=${query}`);
         
         if (!response.ok) {
             const errorData = await response.json();
