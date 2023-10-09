@@ -1,4 +1,3 @@
-// constants.ts
 export const ONE_HOUR_IN_MILLISECONDS = 60 * 60 * 1000;
 export const CITIES_LIST_KEY = 'citiesList';
 export const WEATHER_KEY_PREFIX = 'weather_';
