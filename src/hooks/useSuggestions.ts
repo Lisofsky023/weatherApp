@@ -23,7 +23,6 @@ export const useSuggestions = (query: string) => {
                 try {
                     const data = await fetchSuggestions(debouncedQuery);
                     setSuggestions(data);
-
                     // Сохранение данных и текущего времени в localStorage
                     localStorage.setItem(`suggestions_${debouncedQuery}`, JSON.stringify(data));
                     localStorage.setItem(`suggestionsTime_${debouncedQuery}`, currentTime.toString());

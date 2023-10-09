@@ -21,16 +21,19 @@ const CityItem: React.FC<CityItemProps> = ({ city, onRemove }) => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-  const handlers = isMobile ? useSwipeable({
-    onSwipedLeft: () => {
-        setIsSwipedLeft(true);
-        setTimeout(() => {
-            onRemove(city.name);
-            setIsSwipedLeft(false);
-        }, 300);
-    },
-    trackMouse: true
-}) : {};
+
+const swipeHandlers = useSwipeable({
+  onSwipedLeft: () => {
+      setIsSwipedLeft(true);
+      setTimeout(() => {
+          onRemove(city.name);
+          setIsSwipedLeft(false);
+      }, 300);
+  },
+  trackMouse: true
+});
+
+const handlers = isMobile ? swipeHandlers : {};
 
   return (
     <li className={`cities__item ${isSwipedLeft ? 'swiped-left' : ''}`} key={city.id} {...handlers}>
